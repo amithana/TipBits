@@ -8,6 +8,8 @@
 
 import UIKit
 
+let myNotificationKey="com.codepath.segmentChangeNotificationKey"
+
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var defaultPercentSegment: UISegmentedControl!
@@ -16,13 +18,11 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-                // Do any additional setup after loading the view.
-    }
+           }
     
     override func viewWillAppear(_ animated: Bool) {
-        let defaultPercent = UserDefaults.standard.integer(forKey: "defaultPercent")
-        defaultPercentSegment.selectedSegmentIndex=defaultPercent
+        selectedPercent = UserDefaults.standard.integer(forKey: "defaultPercent")
+        defaultPercentSegment.selectedSegmentIndex=selectedPercent
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,9 +32,19 @@ class SettingsViewController: UIViewController {
     
 
     @IBAction func onDefaultPercentChanged(_ sender: Any) {
+        
      selectedPercent=defaultPercentSegment.selectedSegmentIndex
+        //UserDefaults.standard.set(selectedPercent, forKey:"defaultPercent")
+        //UserDefaults.standard.synchronize()
+        //NotificationCenter.default.post(name: Notification.Name(rawValue:myNotificationKey), object:self)
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         UserDefaults.standard.set(selectedPercent, forKey:"defaultPercent")
         UserDefaults.standard.synchronize()
+        NotificationCenter.default.post(name: Notification.Name(rawValue:myNotificationKey), object:self)
+
         
     }
     
