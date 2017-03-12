@@ -34,20 +34,12 @@ class SettingsViewController: UIViewController {
     @IBAction func onDefaultPercentChanged(_ sender: Any) {
         
      selectedPercent=defaultPercentSegment.selectedSegmentIndex
-        //UserDefaults.standard.set(selectedPercent, forKey:"defaultPercent")
-        //UserDefaults.standard.synchronize()
-        //NotificationCenter.default.post(name: Notification.Name(rawValue:myNotificationKey), object:self)
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         UserDefaults.standard.set(selectedPercent, forKey:"defaultPercent")
         UserDefaults.standard.synchronize()
         NotificationCenter.default.post(name: Notification.Name(rawValue:myNotificationKey), object:self)
-
         
     }
-    
+   
     /*
     // MARK: - Navigation
 
