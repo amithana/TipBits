@@ -1,6 +1,6 @@
 # Pre-work - *TipBits*
 
-**TipBits** is a tip calculator application for iOS.
+**TipBits** is a tip calculator application for iOS submitted as a pre-assignment requirement for CodePath.
 
 Submitted by: **Amitha Murthy**
 
